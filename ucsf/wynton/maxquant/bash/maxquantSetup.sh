@@ -14,7 +14,7 @@ conda config --add channels bioconda
 conda config --add channels conda-forge
 
 # Create maxquantTest Anaconda environment
-conda create maxquantTest
+conda create --name maxquantTest
 
 # Initialize conda for bash
 conda init bash
