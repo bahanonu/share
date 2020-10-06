@@ -57,6 +57,8 @@ bash maxquantSetup.sh
 
 Assuming you are still in the same directory as in the setup step, run MaxQuant as below. Remember to edit the `mqparPath` file in `runMaxQuant.sh` to the path for the MaxQuant XML parameters file you want to use.
 
+__Note:__ Make sure `qsub` in `submitJob.sh` has `-l h_rt=48:00:00` (change the time as needed), which indicates how long the job should run for and thus allows Wynton to send it to the proper queue. Else by default the job is sent to Wynton's `short.q` queue, which kills the job after 30 mins.
+
 ```bash
 bash submitJob.sh
 watch qstat
