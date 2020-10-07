@@ -10,7 +10,9 @@ The end goal is to have python or R wrapper scripts to enable changing of key Ma
 ## MaxQuant references
 
 MaxQuant: https://www.maxquant.org/
+
 MaxQuant Bioconda: https://bioconda.github.io/recipes/maxquant/README.html
+
 MaxQuant papers:
 - https://pubmed.ncbi.nlm.nih.gov/19373234/ - Cox, J., Matic, I., Hilger, M., Nagaraj, N., Selbach, M., Olsen, J. V., & Mann, M. (2009). A practical guide to the MaxQuant computational platform for SILAC-based quantitative proteomics. Nature protocols, 4(5), 698–705. https://doi.org/10.1038/nprot.2009.36
 - https://pubmed.ncbi.nlm.nih.gov/27809316/ - Tyanova, S., Temu, T., & Cox, J. (2016). The MaxQuant computational platform for mass spectrometry-based shotgun proteomics. Nature protocols, 11(12), 2301–2319. https://doi.org/10.1038/nprot.2016.136
@@ -49,7 +51,20 @@ Copy both `bash` and `parameters` folders into a `scripts` or similar sub-direct
 In the terminal, enter the below. This will setup Anaconda, make an Anaconda environment for MaxQuant, and then install MaxQuant and its dependencies. If you run into trouble, enter the commands in the bash script one-by-one.
 
 ```bash
-cd scripts/maxquant/bash
+# SSH into development node and create necessary directories
+ssh dev3
+cd $HOME
+
+# Make sure the primary environment directory is one the user has write permissions for. See .condarc file.
+conda config --append envs_dirs $HOME/.conda/envs
+
+#Make scripts directory
+mkdir -p scripts/maxquant
+cd scripts/maxquant
+
+# Clone the repository and switch to bash directory
+git clone https://github.com/bahanonu/share git_bahanonu_share
+cd git_bahanonu_share/ucsf/wynton/maxquant/bash
 bash maxquantSetup.sh
 ```
 
